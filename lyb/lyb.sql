@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2016-01-15 08:10:07
+-- Generation Time: 2016-01-15 13:50:57
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -19,6 +19,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `lyb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `admin`
+--
+
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` int(8) NOT NULL,
+  `username` text NOT NULL,
+  `password` text NOT NULL,
+  KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`) VALUES
+(1, 'qqq', '7c222fb2927d828af22f592134e8932480637c0d');
 
 -- --------------------------------------------------------
 
@@ -39,7 +59,6 @@ CREATE TABLE IF NOT EXISTS `lyb` (
 
 INSERT INTO `lyb` (`id`, `lyb`) VALUES
 (3, 'æˆ‘å°±æ˜¯è¯•ä¸€ä¸‹ã€‚'),
-(4, 'çŽ°åœ¨å†è¯•ä¸€ä¸‹ã€‚'),
 (5, 'åº”è¯¥æ²¡æœ‰é—®é¢˜äº†ã€‚');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
