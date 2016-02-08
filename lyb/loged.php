@@ -10,6 +10,7 @@
 include("mysql.php");
 if( $_POST )
 {
+	if($_POST['lyb']){
 	$sql = "INSERT INTO lyb ( lyb ) 
 	VALUES ( '".$_POST['lyb']."') ";
 	$result = mysqli_query( $conn, $sql );
@@ -20,6 +21,18 @@ if( $_POST )
 	else
 	{
 		echo "留言添加失败。";
+	}
+	}elseif($_POST['mCookie']){
+	$sql = "UPDATE `mcookie` SET `mCookie`= '".$_POST['mCookie']."'";	
+	}
+	$result = mysqli_query( $conn, $sql );
+	if( $result )
+	{
+		echo "cookie上限修改成功。";
+	}
+	else
+	{
+		echo "cookie上限修改失败。";
 	}
 }
 //使用会话内存储的变量值之前必须先开启会话
@@ -51,7 +64,8 @@ while( $row = mysqli_fetch_array( $result ) )
 	<tr>
 		<td><?php echo $v['id']; ?></td>
 		<td><?php echo $v['lyb']; ?></td>
-        <td><a href="del.php?id=<?php echo $v['id']; ?>" onClick="return confirm('是否要删除这个留言?');">删除</a></td>
+        <td><a href="del.php?id=<?php echo $v['id']; ?>" onClick="return confirm('是否要删除这个留言?');">删除 </a><a href="zy.php?id=<?php echo $v['id']; ?>" onClick="return confirm('是否要禁言该发言者?');">禁言该发言者</a></td>
+        
 	</tr>
 		<?php
 	}
@@ -69,6 +83,15 @@ while( $row = mysqli_fetch_array( $result ) )
   <input type="text" name="lyb" id="lyb" />
   <br>
   <input type="submit" name="button" id="button" value="添加留言" />
+</form>
+<form name="form2" method="post" action="">
+  <label for="remark">cookie上限：</label>
+  <input type="int" name="mCookie" id="mCookie" />
+  <br>
+  <input type="submit" name="button" id="button" value="修改cookie数" />
+</form>
+<form name="form1" method="post" action="gx.php">
+  <input type="submit" name="button" id="button" value="自动删除无效cookie" />
 </form>
 </body>
 </html>

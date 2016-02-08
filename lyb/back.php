@@ -10,8 +10,8 @@
 include("mysql.php");
 if( $_POST )
 {
-	$sql = "INSERT INTO lyb ( lyb ) 
-	VALUES ( '".$_POST['lyb']."') ";
+	$sql = "INSERT INTO lyb ( lyb, name ) 
+	VALUES ( '".$_POST['lyb']."', '".$_COOKIE['id']."') ";
 	$result = mysqli_query( $conn, $sql );
 	if( $result )
 	{
